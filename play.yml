@@ -1,0 +1,13 @@
+---
+- name: deploying project
+  hosts: amp
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: remove d_image
+      command: docker rmi -f 
+    - name: remove d_container
+      command: docker rm -f 
+    - name: run d_container
+      command: docker run -it -d --name -p 8088:8080 
